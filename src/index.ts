@@ -1,3 +1,12 @@
+export interface CreateReportPayload {
+  team_handle: string;
+  title: string;
+  vulnerability_information: string;
+  impact: string;
+  severity_rating: 'none' | 'low' | 'medium' | 'high' | 'critical';
+  weakness_id?: number;
+  structured_scope_id?: number;
+}
 class HackerOneHackerAPI {
   private baseUrl: string = 'https://api.hackerone.com/v1';
   private headers: Headers;
@@ -52,15 +61,7 @@ class HackerOneHackerAPI {
   }
 
   /** Create a Report */
-  async createReport(payload: {
-    team_handle: string;
-    title: string;
-    vulnerability_information: string;
-    impact: string;
-    severity_rating: 'none' | 'low' | 'medium' | 'high' | 'critical';
-    weakness_id?: number;
-    structured_scope_id?: number;
-  }): Promise<any> {
+  async createReport(payload: CreateReportPayload): Promise<any> {
     return this.fetchAPI(`/hackers/reports`, {
       method: 'POST',
       body: JSON.stringify({ data: { type: 'report', attributes: payload } }),
@@ -121,4 +122,4 @@ class HackerOneHackerAPI {
   }
 }
 
-module.exports = { HackerOneHackerAPI };
+export { HackerOneHackerAPI };

@@ -26,19 +26,24 @@ import { HackerOneHackerAPI } from "hackerone-hacker-api-sdk";
 const api = new HackerOneHackerAPI(process.env.HACKERONE_USERNAME, process.env.HACKERONE_API_TOKEN);
 
 // Fetch balance
-api.getBalance()
-  .then(balance => console.log("Balance:", balance))
-  .catch(error => console.error("Error fetching balance:", error));
+await api.getBalance()
 
 // Fetch hacktivity
-api.getHacktivity("severity_rating:critical")
-  .then(hacktivity => console.log("Hacktivity:", hacktivity))
-  .catch(error => console.error("Error fetching hacktivity:", error));
+await api.getHacktivity("severity_rating:critical")
 
 // Fetch reports
-api.getReports()
-  .then(reports => console.log("Reports:", reports))
-  .catch(error => console.error("Error fetching reports:", error));
+await api.getReports()
+
+// Create report
+const reportData = {
+  team_handle: 'security',
+  title: 'XSS in login form',
+  vulnerability_information: 'I found a reflected XSS vulnerability in the login form...',
+  impact: "An attacker could execute arbitrary JavaScript in the victim's browser",
+  severity_rating: 'high'
+}
+
+await api.createReport(reportPayload)
 ```
 
 ## License
