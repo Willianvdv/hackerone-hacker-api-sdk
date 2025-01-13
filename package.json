@@ -30,16 +30,16 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "hackeronehackerapi",
+  "name": "hackerone-hacker-api-sdk",
   "author": "Willian van der Velde",
-  "module": "dist/hackeronehackerapi.esm.js",
+  "module": "dist/hackerone-hacker-api-sdk.esm.js",
   "size-limit": [
     {
-      "path": "dist/hackeronehackerapi.cjs.production.min.js",
+      "path": "dist/hackerone-hacker-api-sdk.cjs.production.min.js",
       "limit": "10 KB"
     },
     {
-      "path": "dist/hackeronehackerapi.esm.js",
+      "path": "dist/hackerone-hacker-api-sdk.esm.js",
       "limit": "10 KB"
     }
   ],

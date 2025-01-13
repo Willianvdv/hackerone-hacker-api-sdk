@@ -1,4 +1,4 @@
-export class HackerOneHackerAPI {
+class HackerOneHackerAPI {
   private baseUrl: string = 'https://api.hackerone.com/v1';
   private headers: Headers;
 
@@ -120,3 +120,5 @@ export class HackerOneHackerAPI {
     );
   }
 }
+
+module.exports = { HackerOneHackerAPI };

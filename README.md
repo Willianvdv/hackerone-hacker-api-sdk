@@ -14,11 +14,16 @@ npm install hackerone-hacker-api-sdk
 
 Here's a quick example to get started:
 
+Pop a node REPL with the SDK loaded:
+```
+HACKERONE_USERNAME=hacker HACKERONE_API_TOKEN=hunter3 npx -p hackerone-hacker-api-sdk node
+```
+
 ```typescript
-import { HackerOneAPI } from "hackerone-hacker-api-sdk";
+import { HackerOneHackerAPI } from "hackerone-hacker-api-sdk";
 
 // Initialize the SDK
-const api = new HackerOneAPI("<YOUR_API_USERNAME>", "<YOUR_API_TOKEN>");
+const api = new HackerOneHackerAPI(process.env.HACKERONE_USERNAME, process.env.HACKERONE_API_TOKEN);
 
 // Fetch balance
 api.getBalance()
@@ -29,34 +34,12 @@ api.getBalance()
 api.getHacktivity("severity_rating:critical")
   .then(hacktivity => console.log("Hacktivity:", hacktivity))
   .catch(error => console.error("Error fetching hacktivity:", error));
+
+// Fetch reports
+api.getReports()
+  .then(reports => console.log("Reports:", reports))
+  .catch(error => console.error("Error fetching reports:", error));
 ```
-
-## Features
-
-- **Fetch Hacktivity**: Retrieve public vulnerability reports based on filters.
-- **Manage Reports**: Access and create vulnerability reports.
-- **Program Data**: Fetch program details, weaknesses, and structured scopes.
-- **Payments**: Check balances, payouts, and earnings.
-
-## Project Setup
-
-Ensure you have Node.js installed and initialize your project:
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/hackerone-hacker-api-sdk.git
-   cd hackerone-hacker-api-sdk
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Build the project:
-   ```bash
-   npm run build
-   ```
 
 ## License
 
